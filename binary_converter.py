@@ -3,10 +3,14 @@ import sys
 
 
 def binary_to_decimal(binary):
-    return sum(2**i for i, bit in enumerate(binary[::-1]) if bit == "1")
+    d = sum(2**i for i, bit in enumerate(binary[::-1]) if bit == "1")
+    return str(d)
 
 
 def decimal_to_binary(decimal):
+    if decimal == "0":
+        return "0"
+
     dec = int(decimal)
     bin = ""
     while dec > 0:
@@ -16,21 +20,27 @@ def decimal_to_binary(decimal):
 
 
 def print_table(*args):
-    middle = " | ".join(map(str, args))
+    middle = " | ".join(args)
     line = "-" * (len(middle) + 2)
     print(f"/{line}\\")
     print(f"| {middle} |")
     print(f"\\{line}/")
 
 
-
 system = sys.argv[2]
 number = sys.argv[1]
 
-if system == "2":
-    decimal = binary_to_decimal(number)
-    print_table(decimal, 10)
+# handle negative integers
+if number[0] == "-":
+    sign = "-"
+    number = number[1:]
 else:
-    binary = decimal_to_binary(number)
-    print_table(binary, 2)
+    sign = ""
+
+if system == "2":
+    decimal = sign + binary_to_decimal(number)
+    print_table(decimal, "10")
+else:
+    binary = sign + decimal_to_binary(number)
+    print_table(binary, "2")
 
