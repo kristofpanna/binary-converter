@@ -7,7 +7,12 @@ def binary_to_decimal(binary):
 
 
 def decimal_to_binary(decimal):
-    return "not yet"
+    dec = int(decimal)
+    bin = ""
+    while dec > 0:
+        bin += str(dec % 2)
+        dec = dec // 2
+    return bin[::-1]
 
 
 def print_table(*args):
