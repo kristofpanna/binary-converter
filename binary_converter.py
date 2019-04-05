@@ -17,7 +17,11 @@ def decimal_to_binary(decimal):
 
 def print_table(*args):
     middle = " | ".join(map(str, args))
-    print(middle)
+    line = "-" * (len(middle) + 2)
+    print(f"/{line}\\")
+    print(f"| {middle} |")
+    print(f"\\{line}/")
+
 
 
 system = sys.argv[2]
