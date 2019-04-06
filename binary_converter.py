@@ -27,15 +27,20 @@ def print_table(*args):
     print(f"\\{line}/")
 
 
+def sign(number):
+    """handle negative integers"""
+    if number[0] == "-":
+        sign = "-"
+        number = number[1:]
+    else:
+        sign = ""
+    return sign
+
+
 system = sys.argv[2]
 number = sys.argv[1]
 
-# handle negative integers
-if number[0] == "-":
-    sign = "-"
-    number = number[1:]
-else:
-    sign = ""
+sign = sign(number)
 
 if system == "2":
     decimal = sign + binary_to_decimal(number)
@@ -43,4 +48,3 @@ if system == "2":
 else:
     binary = sign + decimal_to_binary(number)
     print_table(binary, "2")
-
