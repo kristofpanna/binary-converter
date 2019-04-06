@@ -42,9 +42,12 @@ number = sys.argv[1]
 
 sign = sign(number)
 
-if system == "2":
+BINARY_BASE = "2"
+DECIMAL_BASE = "10"
+
+if system == BINARY_BASE:
     decimal = sign + binary_to_decimal(number)
-    print_table(decimal, "10")
+    print_table(decimal, DECIMAL_BASE)
 else:
     binary = sign + decimal_to_binary(number)
-    print_table(binary, "2")
+    print_table(binary, BINARY_BASE)
